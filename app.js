@@ -4,6 +4,7 @@ const port = 4000
 const bodyParser  = require('body-parser')
 const router = require('./router/routers')
 
+app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use('/', router)
 
