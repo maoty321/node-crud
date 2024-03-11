@@ -47,4 +47,19 @@ router.delete('/delete/:deleteid', async(req, res)=> {
      res.send(error)   
     }
 })
+
+router.patch('/update/:updateid', async(req, res) =>{
+    try {
+    const updateId = req.params.updateid
+    const update = await crudmodel.findbyIdAndUpdate(updateId)
+    if(update) {
+        res.send('Successful update Date')
+    } else {
+        res.send('error occur while update')
+    }
+    } catch (error) {
+        res.send(error)
+    }
+})
+
 module.exports = router
