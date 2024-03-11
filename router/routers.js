@@ -29,4 +29,22 @@ router.post('/data', async(req, res)=> {
         res.send(error)
     }
 })
+
+router.delete('/delete/:deleteid', async(req, res)=> {
+    try {
+        const deleteid = req.params.deleteid
+        if(!deleteid) {
+            res.send('cant Allow delete id')
+        } else {
+           const deleteData = await crudmodel.findByIdAndDelete(deleteid)
+           if(deleteData) {
+            res.send('Successful Delete Date')
+           } else {
+           res.send('Error while deleting data')
+           }
+        }
+    } catch (error) {
+     res.send(error)   
+    }
+})
 module.exports = router
